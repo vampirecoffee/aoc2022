@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Magic input for Advent Of Code
-input*.txt
+*input*.txt
