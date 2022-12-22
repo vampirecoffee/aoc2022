@@ -88,44 +88,28 @@ def count_visible_trees(trees: List[List[Tree]]) -> int:
 def score_trees(trees: List[List[Tree]]):
     for i, row in enumerate(trees):
         for j, tree in enumerate(row):
-            if i == 3 and j == 2:
-                import pdb
-
-                pdb.set_trace()
             # Up
-            tallest_so_far = -1
             for up_i in range(i - 1, -1, -1):
-                if trees[up_i][j].height > tallest_so_far:
-                    tallest_so_far = trees[up_i][j].height
-                    tree.up += 1
-                if trees[up_i][j].height > tree.height:
+                tree.up += 1
+                if trees[up_i][j].height >= tree.height:
                     break
 
             # Down
-            tallest_so_far = -1
             for down_i in range(i + 1, len(trees)):
-                if trees[down_i][j].height > tallest_so_far:
-                    tallest_so_far = trees[down_i][j].height
-                    tree.down += 1
-                if trees[down_i][j].height > tree.height:
+                tree.down += 1
+                if trees[down_i][j].height >= tree.height:
                     break
 
             # Left
-            tallest_so_far = -1
             for left_j in range(j - 1, -1, -1):
-                if trees[i][left_j].height > tallest_so_far:
-                    tallest_so_far = trees[i][left_j].height
-                    tree.left += 1
-                if trees[i][left_j].height > tree.height:
+                tree.left += 1
+                if trees[i][left_j].height >= tree.height:
                     break
 
             # Right
-            tallest_so_far = -1
             for right_j in range(j + 1, len(row)):
-                if trees[i][right_j].height > tallest_so_far:
-                    tallest_so_far = trees[i][right_j].height
-                    tree.right += 1
-                if trees[i][right_j].height > tree.height:
+                tree.right += 1
+                if trees[i][right_j].height >= tree.height:
                     break
 
 
@@ -165,7 +149,3 @@ if __name__ == "__main__":
         "at coordinates",
         coordinates,
     )
-    for i, row in enumerate(trees):
-        for j, tree in enumerate(row):
-            if tree.height == 5:
-                print("tree", tree, "at coordinates", (i, j))
