@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Magic input for Advent Of Code
+*input*.txt
+sample2.txt
